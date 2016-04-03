@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+      <!-- Main component for a primary marketing message or call to action -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% for hotel in hotels %}
+      <div class="jumbotron">
+        <h2>{{ hotel.name }} || 
+           <a href="/hotel/{{hotel.id}}">DETAIL . . . </a>
+           </h2>
+        </p>
+        <!--p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View more &raquo;</a>
+        </p-->
+      </div>
+      {% endfor %}
+{% endblock %}

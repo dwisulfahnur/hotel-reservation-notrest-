@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+      <!-- Main component for a primary marketing message or call to action -->
+
+      <div class="jumbotron">
+        <h2><b>{{ hotel.name }}</b></h2>
+          <p>
+          {{ hotel.address}}<br>
+          {{ hotel.zipcode }}<br>
+          {{ hotel.city.city }}<br>
+          {{ hotel.province.province }}<br>
+          {{ hotel.country.country }}<br>
+        <b><h2>FACILITY</h2></b>
+          <p>
+          {% for facility in facilities %}
+            {{ facility }}<br>
+          {% endfor %}
+          </p>
+        <h2><b>ROOM</b></h2>
+          <p>
+          {% for room in hotels_room %}
+          {{ room.name }} : Rp.{{ room.price }}<br>
+          {% endfor %}
+          </p>
+          <a href="/update_hotel/{{hotel.id}}"><button type="submit" class="btn btn-default">EDIT</button></a>
+          <a href="/delete_hotel/{{hotel.id}}"><button type="submit" class="btn btn-default">DELETE</button></a>
+          <a href="/reservation/{{hotel.id}}"><button type="submit" class="btn btn-default">ORDER</button></a>
+        </p>
+        <!--p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View more &raquo;</a>
+        </p-->
+      </div>
+
+    </div> <!-- /container -->
+
+{% endblock %}

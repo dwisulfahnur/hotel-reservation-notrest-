@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+
+     <!-- Main component for a primary marketing message or call to action -->
+
+      <div class="jumbotron">
+        
+        <form role="form" action="" method="POST">
+        <h1>Edit Hotel</h1>
+          <div class="form-group">
+            <label for="name">Name Hotel:</label>
+            <input type="name" class="form-control" id="name" name="name" value="{{hotel.name}}">
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="address" class="form-control" id="address" name="address" value="{{hotel.address}}">
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Zip Code:</label>
+            <input type="zipcode" class="form-control" id="zipcode" name="zipcode" value="{{hotel.zipcode}}">
+          </div>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <select class="form-control" id="country" name="country">
+              <option value=0>COUNTRY</option>
+              {% for country in countries %}
+                <option value=
+                  {% if hotel.country.id==country.id %}
+                    {{ country.id }} selected>
+                  {% else %}
+                    {{country.id}}>
+                  {% endif %}
+                  {{ country.country }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="province">Province:</label>
+            <select class="form-control" id="province" name="province">
+              <option value=0>PROVINCE</option>
+              {% for province in provincies %}
+              <option value=
+                  {% if hotel.province.id==province.id %}
+                    {{ province.id }} selected>
+                  {% else %}
+                    {{province.id}}>
+                  {% endif %}
+                  {{ province.province }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <select class="form-control" id="city" name="city">
+              <option value=0>CITY</option>
+              {% for city in cities %}
+              <option value=
+                  {% if hotel.city.id==city.id %}
+                    {{ city.id }} selected>
+                  {% else %}
+                    {{city.id}}>
+                  {% endif %}
+                  {{ city.city }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="checkbox">
+            <label>
+            <input type="checkbox" name="garage" value={{facility.garage}}>Garage</label>
+          </div>
+          <div class="checkbox">
+            <label>
+            <input type="checkbox" name="carports" value={{facility.carports}}>Car Ports</label>
+          </div>
+          <div class="checkbox">
+            <label>
+            <input type="checkbox" name="swimmingpool" value={{facility.swimmingpool}}>Swimming Pool</label>
+          </div>
+          <button type="submit" class="btn btn-default">SAVE</button></br>
+        
+        {% if errors %}
+        <br><div class="alert alert-danger">
+        {% for error in errors %}
+          {% if error %}
+          {{ error }}<br>
+          {% endif %}
+        {% endfor %}
+        </div>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <div class="alert alert-success">
+                {{ message }}
+              </div>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        </form>
+        <!--p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View more &raquo;</a>
+        </p-->
+      </div>
+
+
+
+{% endblock %}
