@@ -104,6 +104,7 @@ def new_hotel():
             db.session.add(hotel_facility)
             db.session.commit()
             flash("Hotel successfully created")
+            return redirect(url_for('hotel.hotel_view', id=hotel.id))
     cities = City.query.all()
     provincies = Province.query.all()
     countries = Country.query.all()
@@ -160,7 +161,7 @@ def update_hotel(id):
 
             db.session.commit()
             flash("Hotel successfully updated")
-
+            return redirect(url_for('hotel.hotel_view', id=hotel.id))
     cities = City.query.all()
     provincies = Province.query.all()
     countries = Country.query.all()

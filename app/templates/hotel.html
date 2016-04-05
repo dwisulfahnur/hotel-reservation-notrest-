@@ -3,7 +3,15 @@
 
 
       <!-- Main component for a primary marketing message or call to action -->
-
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
       <div class="jumbotron">
         <h2><b>{{ hotel.name }}</b></h2>
           <p>

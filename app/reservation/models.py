@@ -3,7 +3,6 @@ from app.core.db import db
 from app.user.models import User
 from app.hotel.models import Hotels
 
-
 class Reservation(db.Model):
     __tablename__ = 'Reservation'
     id = db.Column(db.Integer, primary_key=True)
